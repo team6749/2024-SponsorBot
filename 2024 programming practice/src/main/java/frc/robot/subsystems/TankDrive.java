@@ -10,14 +10,16 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class TankDrive extends SubsystemBase {
     double xSpeed;
     double zRotation;
-    WPI_TalonSRX flMotor = new WPI_TalonSRX(1);
-    WPI_TalonSRX blMotor = new WPI_TalonSRX(2);
-    WPI_TalonSRX frMotor = new WPI_TalonSRX(3);
-    WPI_TalonSRX brMotor = new WPI_TalonSRX(4);
+    WPI_TalonSRX flMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontLeftDrive);
+    WPI_TalonSRX blMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontRightDrive);
+    WPI_TalonSRX frMotor = new WPI_TalonSRX(Constants.NumIdStorage.backLeftDrive);
+    WPI_TalonSRX brMotor = new WPI_TalonSRX(Constants.NumIdStorage.backRightDrive);
     XboxController m_controller = new XboxController(0);
     DifferentialDrive myDriveah = new DifferentialDrive(flMotor, frMotor);
   /** Creates a new TankDrive. */
