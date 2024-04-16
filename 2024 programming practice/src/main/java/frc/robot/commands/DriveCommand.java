@@ -5,12 +5,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.TankDrive;
 
 public class DriveCommand extends Command {
+    CommandXboxController _Controller;
     TankDrive _TankDrive = new TankDrive();
   /** Creates a new DriveCommand. */
-  public DriveCommand(TankDrive tankDrive) {
+  public DriveCommand(TankDrive tankDrive, CommandXboxController controller) {
     _TankDrive = tankDrive;
     addRequirements(tankDrive);
     
@@ -24,7 +26,11 @@ public class DriveCommand extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+
+    _TankDrive.setxSpeed(_Controller.getLeftY());
+    _TankDrive.setzRotation(_Controller.getRightX());
+  }
 
   // Called once the command ends or is interrupted.
   @Override
