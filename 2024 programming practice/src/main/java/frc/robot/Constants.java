@@ -22,4 +22,8 @@ public final class Constants {
    public static int backLeftDrive = 3;
    public static int backRightDrive = 4;
   }
+  public static class electronics {
+    public static final int topShooterPort = 2;
+    public static final int bottomShooterPort = 3;
+    }
 }
