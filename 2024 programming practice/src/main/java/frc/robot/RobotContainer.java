@@ -47,9 +47,7 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    m_TankDrive.setDefaultCommand(new DriveCommand(m_TankDrive, m_driverController)); 
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+    m_TankDrive.setDefaultCommand(new DriveCommand(m_TankDrive, m_driverController));
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.

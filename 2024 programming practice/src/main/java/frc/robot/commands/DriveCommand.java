@@ -4,15 +4,15 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.TankDrive;
 
 public class DriveCommand extends Command {
-    CommandXboxController _Controller;
+    XboxController _Controller;
     TankDrive _TankDrive = new TankDrive();
   /** Creates a new DriveCommand. */
-  public DriveCommand(TankDrive tankDrive, CommandXboxController controller) {
+  public DriveCommand(TankDrive tankDrive, XboxController controller) {
     _TankDrive = tankDrive;
     addRequirements(tankDrive);
     
