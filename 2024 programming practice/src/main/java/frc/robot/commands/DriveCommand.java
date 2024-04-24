@@ -14,6 +14,7 @@ public class DriveCommand extends Command {
   /** Creates a new DriveCommand. */
   public DriveCommand(TankDrive tankDrive, XboxController controller) {
     _TankDrive = tankDrive;
+    _Controller = controller;
     addRequirements(tankDrive);
     
     // Use addRequirements() here to declare subsystem dependencies.
