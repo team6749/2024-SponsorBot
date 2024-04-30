@@ -14,7 +14,7 @@ public class ShooterSystem extends SubsystemBase {
     private TalonFX topShooter;
     private TalonFX bottomShooter;
 
-    private double Voltage;
+    private double Voltage = 5;
   /** Creates a new ShooterSystem. */
   public ShooterSystem() {
     topShooter = new TalonFX(Constants.electronics.topShooterPort);
@@ -23,7 +23,7 @@ public class ShooterSystem extends SubsystemBase {
   @Override
   public void periodic() {
     topShooter.setVoltage(Voltage);
-    bottomShooter.setVoltage(Voltage);
+    bottomShooter.setVoltage(-Voltage);
     // This method will be called once per scheduler run
   }
   public void shoot(double Voltage) {
