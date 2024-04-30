@@ -22,4 +22,10 @@ public final class Constants {
    public static int backLeftDrive = 3;
    public static int backRightDrive = 4;
   }
+  public static class electronics{
+    public static int bottomIntake = 7;
+    public static int topIntake = 8;
+    public static int motorIntake = 9;
+    public static int SensorPort = 10;
+  }
 }
