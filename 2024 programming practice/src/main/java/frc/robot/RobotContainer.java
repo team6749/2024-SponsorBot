@@ -5,7 +5,6 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.TankDrive;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,6 +31,7 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+
     // Configure the trigger bindings
     configureBindings();
   }
@@ -46,13 +46,9 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-<<<<<<< Updated upstream
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     m_TankDrive.setDefaultCommand(new DriveCommand(m_TankDrive, m_driverController));
 
-=======
-    swerveDrivebase.setDefaultCommand(new SwerveDriveWithController(swerveDrivebase, controller));
->>>>>>> Stashed changes
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
   }
