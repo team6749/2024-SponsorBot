@@ -7,7 +7,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -19,7 +18,6 @@ public class TankDrive extends SubsystemBase {
     WPI_TalonSRX blMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontRightDrive);
     WPI_TalonSRX frMotor = new WPI_TalonSRX(Constants.NumIdStorage.backLeftDrive);
     WPI_TalonSRX brMotor = new WPI_TalonSRX(Constants.NumIdStorage.backRightDrive);
-    XboxController m_controller = new XboxController(0);
     DifferentialDrive myDriveah = new DifferentialDrive(flMotor, frMotor);
   /** Creates a new TankDrive. */
   public TankDrive() {

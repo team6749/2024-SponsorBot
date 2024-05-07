@@ -26,8 +26,7 @@ public class RobotContainer {
 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final XboxController m_driverController =
-      new XboxController(OperatorConstants.kDriverControllerPort);
+  private final XboxController m_driverController = new XboxController(OperatorConstants.kDriverControllerPort);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -46,13 +45,9 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-<<<<<<< Updated upstream
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     m_TankDrive.setDefaultCommand(new DriveCommand(m_TankDrive, m_driverController));
 
-=======
-    swerveDrivebase.setDefaultCommand(new SwerveDriveWithController(swerveDrivebase, controller));
->>>>>>> Stashed changes
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
   }
