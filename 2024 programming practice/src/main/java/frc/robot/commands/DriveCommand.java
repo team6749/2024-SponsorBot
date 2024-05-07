@@ -31,10 +31,10 @@ public class DriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-if (_Controller.getLeftY() > 0.1){
+if (Math.abs(_Controller.getLeftY()) > 0.1){
     _TankDrive.setxSpeed(_Controller.getLeftY());
 }
-if (_Controller.getRightX() > 0.1) {
+if (Math.abs(_Controller.getRightX()) > 0.1) {
     _TankDrive.setzRotation(_Controller.getRightX());
 }
   }
