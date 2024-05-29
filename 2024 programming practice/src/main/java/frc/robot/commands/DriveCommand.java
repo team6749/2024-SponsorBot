@@ -11,12 +11,12 @@ import frc.robot.Constants;
 import frc.robot.subsystems.TankDrive;
 
 public class DriveCommand extends Command {
-    XboxController _Controller = new XboxController(Constants.OperatorConstants.kDriverControllerPort);
+    XboxController Controller = new XboxController(Constants.OperatorConstants.kDriverControllerPort);
     TankDrive _TankDrive = new TankDrive();
   /** Creates a new DriveCommand. */
   public DriveCommand(TankDrive tankDrive, XboxController controller) {
     _TankDrive = tankDrive;
-    _Controller = controller;
+    Controller = controller;
     addRequirements(tankDrive);
     
     // Use addRequirements() here to declare subsystem dependencies.
@@ -31,11 +31,11 @@ public class DriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-if (Math.abs(_Controller.getLeftY()) > 0.1){
-    _TankDrive.setxSpeed(_Controller.getLeftY());
+if (Math.abs(Controller.getLeftY()) > 0.1){
+    _TankDrive.setxSpeed(exponentialDrive(Controller.getLeftY()));
 }
-if (Math.abs(_Controller.getRightX()) > 0.1) {
-    _TankDrive.setzRotation(_Controller.getRightX());
+if (Math.abs(Controller.getRightX()) > 0.1) {
+    _TankDrive.setzRotation(exponentialDrive(Controller.getRightX()));
 }
   }
 
@@ -47,5 +47,9 @@ if (Math.abs(_Controller.getRightX()) > 0.1) {
   @Override
   public boolean isFinished() {
     return false;
+  }
+  //Adds an exponential growth to the controller movement to prevent jumpiness
+  public double exponentialDrive(double input) {
+    return (Constants.Joystick.CurveConst * Math.pow(input,3) + (1-Constants.Joystick.CurveConst) * input );
   }
 }

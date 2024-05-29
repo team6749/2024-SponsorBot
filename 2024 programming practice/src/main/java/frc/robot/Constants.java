@@ -22,4 +22,9 @@ public final class Constants {
    public static int backLeftDrive = 3;
    public static int backRightDrive = 4;
   }
+  public static class Joystick {
+    public static double CurveConst = 0.8;
+  
+    
+  }
 }
