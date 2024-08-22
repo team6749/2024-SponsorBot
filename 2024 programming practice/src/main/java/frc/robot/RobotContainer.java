@@ -4,15 +4,25 @@
 
 package frc.robot;
 
+<<<<<<< Updated upstream
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveCommand;
+=======
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.Constants.OperatorConstants;
+
+import frc.robot.subsystems.ShooterSystem;
+>>>>>>> Stashed changes
 import frc.robot.subsystems.TankDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.DriveCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -26,15 +36,25 @@ public class RobotContainer {
 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
+<<<<<<< Updated upstream
   private final XboxController m_driverController = new XboxController(OperatorConstants.kDriverControllerPort);
 
+=======
+  private final XboxController m_driverController =
+      new XboxController(OperatorConstants.kDriverControllerPort);
+  public TankDrive tankDrive = new TankDrive();
+ 
+      private final ShooterSystem shooterSubsystem = new ShooterSystem();
+  JoystickButton b = new JoystickButton(m_driverController, 2);
+>>>>>>> Stashed changes
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+    // set default to run every period(20ms)
+    tankDrive.setDefaultCommand(new DriveCommand(tankDrive,m_driverController));
   }
-
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
@@ -45,6 +65,11 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
+<<<<<<< Updated upstream
+=======
+    // use on true or while true as conditional executions
+    b.onTrue(shootCommand());
+>>>>>>> Stashed changes
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     m_TankDrive.setDefaultCommand(new DriveCommand(m_TankDrive, m_driverController));
 
@@ -57,7 +82,24 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
+<<<<<<< Updated upstream
   public Command getAutonomousCommand() {
     return Commands.waitSeconds(1);
+=======
+    public Command getAutonomousCommand() {
+    // An example command will be run in autonomous
+        return Commands.waitSeconds(1);
+  }
+  // define commands inline within the robot container
+  public Command shootCommand() {
+    return Commands.startEnd(
+        () -> {
+            shooterSubsystem.shoot(5);
+        },
+        () ->{
+
+         shooterSubsystem.shoot(0.0);
+  }, shooterSubsystem).withTimeout(0.3);
+>>>>>>> Stashed changes
   }
 }

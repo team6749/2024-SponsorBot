@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class TankDrive extends SubsystemBase {
+    // define every instance field we'll ever need. speed, pid controllers, voltage, motors itself, etc...
     double xSpeed;
     double zRotation;
     WPI_TalonSRX flMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontLeftDrive);
@@ -36,4 +37,5 @@ public class TankDrive extends SubsystemBase {
     public void setzRotation(double speed){
     this.zRotation = speed;
   }
-}
+
+  }

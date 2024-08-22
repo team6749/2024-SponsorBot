@@ -4,19 +4,34 @@
 
 package frc.robot.commands;
 
+<<<<<<< Updated upstream
 import edu.wpi.first.util.sendable.SendableBuilder;
+=======
+>>>>>>> Stashed changes
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.TankDrive;
 
 public class DriveCommand extends Command {
+<<<<<<< Updated upstream
     XboxController _Controller = new XboxController(Constants.OperatorConstants.kDriverControllerPort);
+=======
+    // define the subsystems we use, and controllers.
+>>>>>>> Stashed changes
     TankDrive _TankDrive = new TankDrive();
+    XboxController xbox = new XboxController(2);
   /** Creates a new DriveCommand. */
+<<<<<<< Updated upstream
   public DriveCommand(TankDrive tankDrive, XboxController controller) {
     _TankDrive = tankDrive;
     _Controller = controller;
+=======
+  public DriveCommand(TankDrive tankDrive, XboxController Controller) {
+    // Constructor, defines the arguments, connects subsystems with inputs.
+    _TankDrive = tankDrive;
+    this.xbox = Controller;
+>>>>>>> Stashed changes
     addRequirements(tankDrive);
     
     // Use addRequirements() here to declare subsystem dependencies.
