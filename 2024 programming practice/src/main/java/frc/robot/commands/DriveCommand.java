@@ -4,34 +4,22 @@
 
 package frc.robot.commands;
 
-<<<<<<< Updated upstream
-import edu.wpi.first.util.sendable.SendableBuilder;
-=======
->>>>>>> Stashed changes
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.subsystems.TankDrive;
 
 public class DriveCommand extends Command {
-<<<<<<< Updated upstream
     XboxController _Controller = new XboxController(Constants.OperatorConstants.kDriverControllerPort);
-=======
     // define the subsystems we use, and controllers.
->>>>>>> Stashed changes
+    XboxController Controller = new XboxController(Constants.OperatorConstants.kDriverControllerPort);
     TankDrive _TankDrive = new TankDrive();
     XboxController xbox = new XboxController(2);
   /** Creates a new DriveCommand. */
-<<<<<<< Updated upstream
-  public DriveCommand(TankDrive tankDrive, XboxController controller) {
-    _TankDrive = tankDrive;
-    _Controller = controller;
-=======
   public DriveCommand(TankDrive tankDrive, XboxController Controller) {
     // Constructor, defines the arguments, connects subsystems with inputs.
     _TankDrive = tankDrive;
     this.xbox = Controller;
->>>>>>> Stashed changes
     addRequirements(tankDrive);
     
     // Use addRequirements() here to declare subsystem dependencies.
@@ -46,11 +34,11 @@ public class DriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-if (Math.abs(_Controller.getLeftY()) > 0.1){
-    _TankDrive.setxSpeed(_Controller.getLeftY());
+if (Math.abs(Controller.getLeftY()) > 0.1){
+    _TankDrive.setxSpeed(exponentialDrive(Controller.getLeftY()));
 }
-if (Math.abs(_Controller.getRightX()) > 0.1) {
-    _TankDrive.setzRotation(_Controller.getRightX());
+if (Math.abs(Controller.getRightX()) > 0.1) {
+    _TankDrive.setzRotation(exponentialDrive(Controller.getRightX()));
 }
   }
 
@@ -62,5 +50,9 @@ if (Math.abs(_Controller.getRightX()) > 0.1) {
   @Override
   public boolean isFinished() {
     return false;
+  }
+  //Adds an exponential growth to the controller movement to prevent jumpiness
+  public double exponentialDrive(double input) {
+    return (Constants.Joystick.CurveConst * Math.pow(input,3) + (1-Constants.Joystick.CurveConst) * input );
   }
 }
