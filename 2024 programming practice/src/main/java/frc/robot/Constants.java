@@ -22,6 +22,14 @@ public final class Constants {
    public static int backLeftDrive = 3;
    public static int backRightDrive = 4;
   }
+  public static class Electronics{
+    public static int controller = 5;
+    public static int lencoder = 7;
+    public static int rencoder = 8; 
+  }
+  public static class PoiConstants{
+    
+  }
 }
 
 
