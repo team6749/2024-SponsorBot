@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -15,15 +16,11 @@ public class TankDrive extends SubsystemBase {
     // define every instance field we'll ever need. speed, pid controllers, voltage, motors itself, etc...
     double xSpeed;
     double zRotation;
-    WPI_TalonSRX flMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontLeftDrive);
-    WPI_TalonSRX blMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontRightDrive);
-    WPI_TalonSRX frMotor = new WPI_TalonSRX(Constants.NumIdStorage.backLeftDrive);
-    WPI_TalonSRX brMotor = new WPI_TalonSRX(Constants.NumIdStorage.backRightDrive);
-    DifferentialDrive myDriveah = new DifferentialDrive(flMotor, frMotor);
+    TalonFX leftMotor = new TalonFX(Constants.NumIdStorage.frontLeftDrive);
+    TalonFX rightMotor = new TalonFX(Constants.NumIdStorage.frontRightDrive);
+    DifferentialDrive myDriveah = new DifferentialDrive(rightMotor, leftMotor);
   /** Creates a new TankDrive. */
   public TankDrive() {
-    brMotor.follow(frMotor);
-    blMotor.follow(flMotor);
   }
 
   @Override
