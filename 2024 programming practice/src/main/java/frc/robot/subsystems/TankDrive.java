@@ -5,31 +5,25 @@
 package frc.robot.subsystems;
 
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+
 
 
 public class TankDrive extends SubsystemBase {
     double xSpeed;
     double zRotation;
-    WPI_TalonSRX flMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontLeftDrive);
-    WPI_TalonSRX blMotor = new WPI_TalonSRX(Constants.NumIdStorage.frontRightDrive);
-    WPI_TalonSRX frMotor = new WPI_TalonSRX(Constants.NumIdStorage.backLeftDrive);
-    WPI_TalonSRX brMotor = new WPI_TalonSRX(Constants.NumIdStorage.backRightDrive);
-    DifferentialDrive myDriveah = new DifferentialDrive(flMotor, frMotor);
+    TankModule LMotor = new TankModule(getName(), 0, 0, null);
+    TankModule RMotor = new TankModule(getName(), 0, 0, null);
   /** Creates a new TankDrive. */
-  public TankDrive() {
-    brMotor.follow(frMotor);
-    blMotor.follow(flMotor);
+  public TankDrive(TankModule motorLeft, TankModule motorRight) {
+    this.LMotor = motorLeft;
+    this.RMotor = motorRight;
   }
 
   @Override
   public void periodic() {
-    myDriveah.arcadeDrive(-xSpeed, -zRotation);
+    
     // This method will be called once per scheduler run
   }
   public void setxSpeed(double speed){

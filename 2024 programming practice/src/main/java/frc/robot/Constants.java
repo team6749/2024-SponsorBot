@@ -34,6 +34,15 @@ public final class Constants {
     public static double gearRatio = 1000000000;
     public static double wheelDiameterCm = 15.2;
   }
+  public static class JoystickConstants {
+    public static final double deadZoneRange = 0.15;
+    public static final double deadZoneRotation = 0.10;
+
+    public static final double maxLinearSpeedms = 4.0;
+    public static final double maxRotationalSpeedDegrees = 360;
+
+    public static final double joystickLinearityAdjustment = 0.8;
+}
 }
 
 

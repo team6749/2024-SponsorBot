@@ -5,9 +5,9 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.TankDrive;
+import frc.robot.subsystems.TankModule;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -28,11 +28,12 @@ public class RobotContainer {
 
   private final XboxController controller =
       new XboxController(OperatorConstants.kDriverControllerPort);
-
+  public TankModule motorLeft = new TankModule("Left", 0, 0, null); 
+  public TankModule motorRight = new TankModule("Right", 0, 0, null); 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-      TankDrive = new TankDrive();
+      this.TankDrive = new TankDrive(motorLeft, motorRight);
     // Configure the trigger bindings
     configureBindings();
     TankDrive.setDefaultCommand(new DriveCommand(TankDrive, controller));
