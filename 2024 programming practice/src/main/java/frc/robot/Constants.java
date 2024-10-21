@@ -24,11 +24,15 @@ public final class Constants {
   }
   public static class Electronics{
     public static int controller = 5;
-    public static int lencoder = 7;
-    public static int rencoder = 8; 
+    public static int lEncoder = 7;
+    public static int rEncoder = 8; 
   }
   public static class PoiConstants{
-    
+    //what is life - Austin
+  }
+  public static class SwerveConstants {
+    public static double gearRatio = 1000000000;
+    public static double wheelDiameterCm = 15.2;
   }
 }
 

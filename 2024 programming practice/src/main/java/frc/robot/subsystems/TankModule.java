@@ -44,7 +44,7 @@ public class TankModule implements Sendable{
         public void periodic() {
             final double driveOutput = veloPID.calculate(getModuleVelocityMs(),
             m_targetstate.speedMetersPerSecond);
-            final double driveFeedforward = (m_targetstate.speedMetersPerSecond * 2.8);
+            final double driveFeedforward = (m_targetstate.speedMetersPerSecond * 2.8); //don't ask why it is 2.8, I don't know either, probably tweakable
             
             motor.setVoltage(driveOutput + driveFeedforward);
         }
