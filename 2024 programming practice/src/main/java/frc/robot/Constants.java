@@ -17,21 +17,19 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
   }
   public static class NumIdStorage{
-   public static int frontLeftDrive = 1;
-   public static int frontRightDrive = 2;
-   public static int backLeftDrive = 3;
-   public static int backRightDrive = 4;
+    public static int LeftMotor = 8;
+    public static int LEncoder;
+    public static int RightMotor = 9;
+    public static int REncoder;
   }
   public static class Electronics{
     public static int controller = 5;
-    public static int lEncoder = 7;
-    public static int rEncoder = 8; 
   }
   public static class PoiConstants{
     //what is life - Austin
   }
-  public static class SwerveConstants {
-    public static double gearRatio = 1000000000;
+  public static class ChasisConstants {
+    public static double gearRatio = 1;
     public static double wheelDiameterCm = 15.2;
   }
   public static class JoystickConstants {

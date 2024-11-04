@@ -49,6 +49,6 @@ public class TankModule implements Sendable{
         motor.setNeutralMode(NeutralModeValue.Brake);
     }
     public double getModuleVelocityMs() {
-        return motor.getVelocity().getValueAsDouble() / Constants.SwerveConstants.gearRatio * Constants.SwerveConstants.wheelDiameterCm;
+        return motor.getVelocity().getValueAsDouble() / Constants.ChasisConstants.gearRatio * Constants.ChasisConstants.wheelDiameterCm;
     }
 }
