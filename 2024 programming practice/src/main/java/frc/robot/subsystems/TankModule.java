@@ -7,6 +7,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.sendable.Sendable;
@@ -18,8 +19,9 @@ public class TankModule implements Sendable{
     public  CANcoder encoder;
     public TalonFX motor;
     public Translation2d location;
-    public final PIDController veloPID = new PIDController(0, 0, 0);
-    private SwerveModuleState m_targetstate = new SwerveModuleState();
+    public double speedMetersPerSecond = motor.getVelocity().getValueAsDouble();
+    public final PIDController veloPID = new PIDController(1, 0.1, 0.2);
+    //private SwerveModuleState m_targetstate = new SwerveModuleState();
 
     public TankModule(String name, int encoderport, int motorport, Translation2d locationFromCenter) {
         this.name = name;
@@ -40,9 +42,8 @@ public class TankModule implements Sendable{
 
         public void periodic() {
             final double driveOutput = veloPID.calculate(getModuleVelocityMs(),
-            m_targetstate.speedMetersPerSecond);
-            final double driveFeedforward = (m_targetstate.speedMetersPerSecond * 2.8); //don't ask why it is 2.8, I don't know either, probably tweakable
-            
+            motor.getVelocity().getValueAsDouble());
+            final double driveFeedforward = (motor.getVelocity().getValueAsDouble() * 2.8); //don't ask why it is 2.8, I don't know either, probably tweakable
             motor.setVoltage(driveOutput + driveFeedforward);
         }
         public void setModuleNeutralMode(NeutralMode neutralModeValue) {

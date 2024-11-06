@@ -12,7 +12,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+import com.fasterxml.jackson.core.StreamReadConstraints.Builder;
+
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -28,17 +32,16 @@ public class RobotContainer {
 
   private final XboxController controller =
       new XboxController(OperatorConstants.kDriverControllerPort);
-  public TankModule motorLeft = new TankModule("Left", 0, 0, null); 
-  public TankModule motorRight = new TankModule("Right", 0, 0, null); 
-
+  public TankModule motorLeft = new TankModule("Left", 0, Constants.NumIdStorage.LeftMotor, null); 
+  public TankModule motorRight = new TankModule("Right", 0, Constants.NumIdStorage.RightMotor, null); 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
       this.TankDrive = new TankDrive(motorLeft, motorRight);
     // Configure the trigger bindings
     configureBindings();
     TankDrive.setDefaultCommand(new DriveCommand(TankDrive, controller));
-    
   }
+  
 
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the

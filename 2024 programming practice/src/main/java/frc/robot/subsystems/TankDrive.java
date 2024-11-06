@@ -7,14 +7,15 @@ package frc.robot.subsystems;
 
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 
 
 public class TankDrive extends SubsystemBase {
     double xSpeed;
     double zRotation;
-    TankModule LMotor = new TankModule(getName(), 0, 0, null);
-    TankModule RMotor = new TankModule(getName(), 0, 0, null);
+    TankModule LMotor = new TankModule(getName(), 0, Constants.NumIdStorage.LeftMotor, null);
+    TankModule RMotor = new TankModule(getName(), 0, Constants.NumIdStorage.RightMotor, null);
   /** Creates a new TankDrive. */
   public TankDrive(TankModule motorLeft, TankModule motorRight) {
     this.LMotor = motorLeft;
