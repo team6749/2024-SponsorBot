@@ -19,7 +19,6 @@ public class TankModule implements Sendable{
     public  CANcoder encoder;
     public TalonFX motor;
     public Translation2d location;
-    public double speedMetersPerSecond = motor.getVelocity().getValueAsDouble();
     public final PIDController veloPID = new PIDController(1, 0.1, 0.2);
     //private SwerveModuleState m_targetstate = new SwerveModuleState();
 
@@ -30,7 +29,6 @@ public class TankModule implements Sendable{
         location = locationFromCenter;
         veloPID.enableContinuousInput(0, 360);
         this.setModuleNeutralMode(NeutralMode.Brake); 
-        
     }
     public void initSendable(SendableBuilder builder) {
         // TODO Auto-generated method stub
