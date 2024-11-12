@@ -18,9 +18,7 @@ public final class Constants {
   }
   public static class NumIdStorage{
     public static int LeftMotor = 8;
-    public static int LEncoder;
     public static int RightMotor = 9;
-    public static int REncoder;
   }
   public static class Electronics{
     public static int controller = 5;

@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 
 
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -14,8 +15,8 @@ import frc.robot.Constants;
 public class TankDrive extends SubsystemBase {
     double xSpeed;
     double zRotation;
-    TankModule LMotor = new TankModule(getName(), 0, Constants.NumIdStorage.LeftMotor, null);
-    TankModule RMotor = new TankModule(getName(), 0, Constants.NumIdStorage.RightMotor, null);
+    TankModule LMotor = new TankModule(getName(), Constants.NumIdStorage.LeftMotor, null);
+    TankModule RMotor = new TankModule(getName(), Constants.NumIdStorage.RightMotor, null);
   /** Creates a new TankDrive. */
   public TankDrive(TankModule motorLeft, TankModule motorRight) {
     this.LMotor = motorLeft;
@@ -27,10 +28,15 @@ public class TankDrive extends SubsystemBase {
     
     // This method will be called once per scheduler run
   }
-  public void setxSpeed(double speed){
-    this.xSpeed = speed;
+  public void setYSpeed(ChassisSpeeds desiredSpeed){
+    LMotor.setSubsystemState(desiredSpeed);
+    RMotor.setSubsystemState(desiredSpeed);
   }
     public void setzRotation(double speed){
     this.zRotation = speed;
   }
+  public double getChassisVelocityMs() {
+    return (LMotor.getModuleVelocityMs() + RMotor.getModuleVelocityMs())/2;
+  }
+
 }
