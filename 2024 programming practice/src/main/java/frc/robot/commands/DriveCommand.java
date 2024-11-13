@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.Constants.JoystickConstants;
@@ -30,11 +31,11 @@ public class DriveCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    double yJoystickInput = m_controller.getLeftY();
+    double ySpeedms = joystickResponseCurve(yJoystickInput) * JoystickConstants.maxLinearSpeedms;
+    ChassisSpeeds desiredSpeed = new ChassisSpeeds(0,ySpeedms,0);
     _TankDrive.setYSpeed(desiredSpeed);
   }
-  double yJoystickInput = m_controller.getLeftY();
-  public double ySpeedms = joystickResponseCurve(yJoystickInput) * JoystickConstants.maxLinearSpeedms;
-  ChassisSpeeds desiredSpeed = new ChassisSpeeds(ySpeedms,0,0);
 
   // Called once the command ends or is interrupted.
   @Override
@@ -49,7 +50,7 @@ public class DriveCommand extends Command {
     return (JoystickConstants.joystickLinearityAdjustment * (Math.pow(input, 3)))
             + ((1 - JoystickConstants.joystickLinearityAdjustment) * input);
 }
-public void deadZone() {
+public void deadZone(double yJoystickInput) {
   if (yJoystickInput < JoystickConstants.deadZoneRange);
     yJoystickInput = 0;
 }

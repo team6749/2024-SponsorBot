@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 
 
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -25,7 +26,9 @@ public class TankDrive extends SubsystemBase {
 
   @Override
   public void periodic() {
-    
+    SmartDashboard.putNumber("left motor velocity", LMotor.getModuleVelocityMs());
+    LMotor.periodic();
+    RMotor.periodic();
     // This method will be called once per scheduler run
   }
   public void setYSpeed(ChassisSpeeds desiredSpeed){

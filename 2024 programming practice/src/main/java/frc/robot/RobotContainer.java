@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -27,17 +28,17 @@ public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private TankDrive TankDrive;
-
+  public TankModule motorRight = new TankModule("Right", Constants.NumIdStorage.RightMotor, null); 
+  public TankModule motorLeft = new TankModule("Left", Constants.NumIdStorage.LeftMotor, null); 
   private final XboxController controller =
       new XboxController(OperatorConstants.kDriverControllerPort);
-  public TankModule motorLeft = new TankModule("Left", Constants.NumIdStorage.LeftMotor, null); 
-  public TankModule motorRight = new TankModule("Right", Constants.NumIdStorage.RightMotor, null); 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-      this.TankDrive = new TankDrive(motorLeft, motorRight);
+      this.TankDrive = new TankDrive(motorLeft,motorRight );
     // Configure the trigger bindings
     configureBindings();
     TankDrive.setDefaultCommand(new DriveCommand(TankDrive, controller));
+    
   }
   
 
@@ -51,7 +52,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-
+    System.out.println(motorLeft.getname());
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
   }

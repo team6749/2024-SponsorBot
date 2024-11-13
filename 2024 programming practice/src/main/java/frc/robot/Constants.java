@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.TankModule;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -38,6 +40,10 @@ public final class Constants {
     public static final double maxRotationalSpeedDegrees = 360;
 
     public static final double joystickLinearityAdjustment = 0.8;
+}
+public static class Motors{
+    public TankModule motorRight = new TankModule("Right", Constants.NumIdStorage.RightMotor, null); 
+    public TankModule motorLeft = new TankModule("Left", Constants.NumIdStorage.LeftMotor, null); 
 }
 }
 
