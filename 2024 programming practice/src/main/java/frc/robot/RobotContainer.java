@@ -28,8 +28,8 @@ public class RobotContainer {
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private TankDrive TankDrive;
-  public TankModule motorRight = new TankModule("Right", Constants.NumIdStorage.RightMotor, null); 
-  public TankModule motorLeft = new TankModule("Left", Constants.NumIdStorage.LeftMotor, null); 
+  public TankModule motorRight = new TankModule("Right", Constants.NumIdStorage.RightMotor, null, false); 
+  public TankModule motorLeft = new TankModule("Left", Constants.NumIdStorage.LeftMotor, null, true); 
   private final XboxController controller =
       new XboxController(OperatorConstants.kDriverControllerPort);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */

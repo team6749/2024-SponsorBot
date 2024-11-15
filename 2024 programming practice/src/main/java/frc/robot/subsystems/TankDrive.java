@@ -16,8 +16,8 @@ import frc.robot.Constants;
 public class TankDrive extends SubsystemBase {
     double xSpeed;
     double zRotation;
-    TankModule LMotor = new TankModule(getName(), Constants.NumIdStorage.LeftMotor, null);
-    TankModule RMotor = new TankModule(getName(), Constants.NumIdStorage.RightMotor, null);
+    TankModule LMotor;
+    TankModule RMotor;
   /** Creates a new TankDrive. */
   public TankDrive(TankModule motorLeft, TankModule motorRight) {
     this.LMotor = motorLeft;

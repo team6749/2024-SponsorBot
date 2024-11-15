@@ -41,10 +41,10 @@ public final class Constants {
 
     public static final double joystickLinearityAdjustment = 0.8;
 }
-public static class Motors{
-    public TankModule motorRight = new TankModule("Right", Constants.NumIdStorage.RightMotor, null); 
-    public TankModule motorLeft = new TankModule("Left", Constants.NumIdStorage.LeftMotor, null); 
-}
+// public static class Motors{
+//     public TankModule motorRight = new TankModule("Right", Constants.NumIdStorage.RightMotor, null, true); 
+//     public TankModule motorLeft = new TankModule("Left", Constants.NumIdStorage.LeftMotor, null, false); 
+//}
 }
 
 
